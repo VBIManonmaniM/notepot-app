@@ -1,0 +1,31 @@
+.root {
+    width: 150px;
+    overflow: auto;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 0.75rem;
+}
+
+.card-text {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.65rem !important;
+}
+
+.card-body {
+    padding: 0.5rem !important;
+}
+
+.card-title {
+    margin-bottom: 0.1rem !important;
+}
+
+.active {
+   background-color:  #f1dc7e !important;
+}

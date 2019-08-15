@@ -1,0 +1,9 @@
+.action-items-container {
+    display: flex;
+    padding: 0.2rem;
+    background: lightgray;
+}
+
+.action-items-container * {
+    padding: 0.2rem;
+}
