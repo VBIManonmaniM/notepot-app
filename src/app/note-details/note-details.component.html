@@ -1,3 +1,14 @@
-<p>
-  note-details works!
-</p>
+<div class="d-flex flex-column">
+  <input 
+    type='text' 
+    (change)='titleChanged()' 
+    [(ngModel)]='model.title'
+    placeholder="Title" 
+  />
+  <textarea 
+    placeholder="Content"
+    [(ngModel)]='model.content'
+    cols="100"
+    rows="20"
+  ></textarea>
+</div>
