@@ -14,7 +14,7 @@ export interface IAppState {
 export const INITIAL_STATE: IAppState = {
     notes: [],
     activeNoteId: null
-} 
+}
 
 export const rootReducer = (prevState: IAppState, action): IAppState => {
     switch (action.type) {
