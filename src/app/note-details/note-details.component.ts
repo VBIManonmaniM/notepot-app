@@ -14,7 +14,8 @@ export class NoteDetailsComponent implements OnInit {
     id: '',
     title: '',
     content: '',
-    lastUpdated: null
+    lastUpdated: null,
+    visible: true
   }
   constructor(private ngRedux: NgRedux<IAppState>) { 
     this.setActiveNote();
@@ -25,7 +26,8 @@ export class NoteDetailsComponent implements OnInit {
       id: '',
       title: '',
       content: '',
-      lastUpdated: null
+      lastUpdated: null,
+      visible: true
     };
   }
 

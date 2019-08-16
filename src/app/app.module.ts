@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ActionItemsComponent } from './action-items/action-items.component';
-import { NoteListComponent } from './note-list/note-list.component';
+import { NoteListComponent, FilterNotes } from './note-list/note-list.component';
 import { NoteDetailsComponent } from './note-details/note-details.component';
-
 
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { rootReducer, IAppState, INITIAL_STATE } from "../store/store";
@@ -17,7 +16,8 @@ import { rootReducer, IAppState, INITIAL_STATE } from "../store/store";
     AppComponent,
     ActionItemsComponent,
     NoteListComponent,
-    NoteDetailsComponent
+    NoteDetailsComponent,
+    FilterNotes
   ],
   imports: [
     BrowserModule,

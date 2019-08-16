@@ -1,7 +1,7 @@
 <div class="item-list">
   <div class="root">
     <div 
-      *ngFor="let note of (notes | async)" 
+      *ngFor="let note of (notes | async | FilterNotes)" 
       (click)="setActiveNote(note.id)" 
       class="card"
       [class.active]="note.id === (activeNoteId | async)"

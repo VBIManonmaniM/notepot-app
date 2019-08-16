@@ -1,9 +1,10 @@
-import { ADD_NOTE, DELETE_NOTE, SET_ACTIVE_NOTE, UPDATE_NOTE } from "./action";
+import { ADD_NOTE, DELETE_NOTE, SET_ACTIVE_NOTE, UPDATE_NOTE, SEARCH_NOTE } from "./action";
 export interface INotes {
     id: string;
     title: string;
     content: string;
     lastUpdated: Date;
+    visible: boolean;
 }
 
 export interface IAppState {
@@ -20,7 +21,7 @@ if (existingNotes) {
         activeNoteId: null
     };
 }
-export const INITIAL_STATE: IAppState = existingNotes; 
+export const INITIAL_STATE: IAppState = existingNotes;
 
 export const rootReducer = (prevState: IAppState, action): IAppState => {
     switch (action.type) {
@@ -33,6 +34,7 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
                     id,
                     title: '',
                     content: '',
+                    visible: true,
                     lastUpdated: new Date()
                 }].concat(prevState.notes)
             }
@@ -61,6 +63,28 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
             return {
                 ...prevState,
                 activeNoteId: action.id
+            }
+        case SEARCH_NOTE:
+            const { searchText } = action;
+            if (!searchText) {
+                return {
+                    ...prevState,
+                    notes: prevState.notes.map(note => ({
+                        ...note,
+                        visible: true
+                    }))
+                };
+            } else {
+                return {
+                    ...prevState,
+                    notes: prevState.notes.map(note => ({
+                        ...note,
+                        visible: (
+                            note.title.includes(searchText) ||
+                            note.content.includes(searchText)
+                        ) ? true : false
+                    }))
+                };
             }
         default:
             return prevState;
