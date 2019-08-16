@@ -20,12 +20,22 @@ export class NoteDetailsComponent implements OnInit {
     this.setActiveNote();
   }
 
+  resetState() {
+    this.model = {
+      id: '',
+      title: '',
+      content: '',
+      lastUpdated: null
+    };
+  }
 
   setActiveNote = () => {
     const {activeNoteId, notes} = this.ngRedux.getState();
     const note = notes.find(note => note.id === activeNoteId);
     if (note) {
       this.model = note;
+    } else {
+      this.resetState();
     }
   }
 
