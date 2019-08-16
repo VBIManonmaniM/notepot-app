@@ -12,7 +12,8 @@ export class NoteListComponent implements OnInit {
   @select() notes;
   @select() activeNoteId;
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>) { 
+  }
 
   ngOnInit() {
   }

@@ -7,9 +7,9 @@
       [class.active]="note.id === (activeNoteId | async)"
     >
       <div class="card-body">
-        <h5 class="card-title">{{note.title}}</h5>
-        <p class="card-text"><span>{{node.lastUpdated}}</span>
-          {{node.content}}
+        <h5 class="card-title">{{note.title || 'New Note'}}</h5>
+        <p class="card-text"><span>{{note.lastUpdated}}</span>
+          {{note.content || 'No additional details'}}
         </p>
       </div>
     </div>
