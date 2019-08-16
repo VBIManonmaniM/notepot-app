@@ -8,7 +8,6 @@ import { ADD_NOTE, DELETE_NOTE } from "../../store/action";
   styleUrls: ['./action-items.component.css']
 })
 export class ActionItemsComponent implements OnInit {
-
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
@@ -27,7 +26,7 @@ export class ActionItemsComponent implements OnInit {
   }
 
   save() {
-
+    window.localStorage.setItem('notes', JSON.stringify(this.ngRedux.getState()));
   }
 
 }

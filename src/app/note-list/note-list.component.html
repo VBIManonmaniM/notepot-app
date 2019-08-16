@@ -8,7 +8,7 @@
     >
       <div class="card-body">
         <h5 class="card-title">{{note.title || 'New Note'}}</h5>
-        <p class="card-text"><span>{{note.lastUpdated}}</span>
+        <p class="card-text"><span>{{note.lastUpdated | date: 'hh:mm'}}</span>
           {{note.content || 'No additional details'}}
         </p>
       </div>

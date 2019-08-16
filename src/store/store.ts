@@ -11,10 +11,16 @@ export interface IAppState {
     activeNoteId: string;
 }
 
-export const INITIAL_STATE: IAppState = {
-    notes: [],
-    activeNoteId: null
+let existingNotes = window.localStorage.getItem('notes') as any;
+if (existingNotes) {
+    existingNotes = JSON.parse(existingNotes);
+} else {
+    existingNotes = {
+        notes: [],
+        activeNoteId: null
+    };
 }
+export const INITIAL_STATE: IAppState = existingNotes; 
 
 export const rootReducer = (prevState: IAppState, action): IAppState => {
     switch (action.type) {
