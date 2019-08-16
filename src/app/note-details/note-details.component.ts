@@ -17,13 +17,20 @@ export class NoteDetailsComponent implements OnInit {
     lastUpdated: null
   }
   constructor(private ngRedux: NgRedux<IAppState>) { 
+    this.setActiveNote();
+  }
+
+
+  setActiveNote = () => {
+    const {activeNoteId, notes} = this.ngRedux.getState();
+    const note = notes.find(note => note.id === activeNoteId);
+    if (note) {
+      this.model = note;
+    }
   }
 
   ngOnInit() {
-    this.ngRedux.subscribe(() => {
-      const {activeNoteId, notes} = this.ngRedux.getState();
-      this.model = notes.filter(note => note.id === activeNoteId)[0];
-    });
+    this.ngRedux.subscribe(this.setActiveNote);
   }
 
   onChange() {
