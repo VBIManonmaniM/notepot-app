@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState,INotes } from 'store/store';
-import { UPDATE_NOTE } from "../../store/action";
+import { SET_ACTIVE_NOTE } from "../../store/action";
 
 @Component({
   selector: 'app-note-list',
@@ -15,6 +15,13 @@ export class NoteListComponent implements OnInit {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+  }
+
+  setActiveNote(id: string) {
+    this.ngRedux.dispatch({
+      type: SET_ACTIVE_NOTE,
+      id
+    });
   }
 
 }

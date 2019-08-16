@@ -1,6 +1,11 @@
 <div class="item-list">
   <div class="root">
-    <div *ngFor="let note of (notes | async)" (click)="" class="card">
+    <div 
+      *ngFor="let note of (notes | async)" 
+      (click)="setActiveNote(note.id)" 
+      class="card"
+      [class.active]="note.id === (activeNoteId | async)"
+    >
       <div class="card-body">
         <h5 class="card-title">{{note.title}}</h5>
         <p class="card-text"><span>{{node.lastUpdated}}</span>

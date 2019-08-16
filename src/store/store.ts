@@ -19,18 +19,19 @@ export const INITIAL_STATE: IAppState = {
 export const rootReducer = (prevState: IAppState, action): IAppState => {
     switch (action.type) {
         case ADD_NOTE:
-            action.note.id = Math.random();
             return {
                 ...prevState,
                 notes: prevState.notes.concat({
-                    ...action.note,
+                    id: Math.random().toString(),
+                    title: '',
+                    content: '',
                     lastUpdated: new Date()
                 })
             }
         case DELETE_NOTE:
             return {
                 ...prevState,
-                notes: prevState.notes.filter(note => note.id !== action.note.id)
+                notes: prevState.notes.filter(note => note.id !== prevState.activeNoteId)
             }
         case UPDATE_NOTE:
             let note = prevState.notes.find(note => note.id === action.note.id);

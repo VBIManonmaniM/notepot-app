@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
-import { IAppState,INotes } from 'store/store';
+import { IAppState, INotes } from 'store/store';
 import { UPDATE_NOTE } from "../../store/action";
 @Component({
   selector: 'app-note-details',
