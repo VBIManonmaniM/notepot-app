@@ -7,3 +7,25 @@
 .action-items-container * {
     padding: 0.2rem;
 }
+
+.searchContainer {
+    display: inline-flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+  
+.searchIcon {
+    padding: 0.5rem !important;
+    background: white;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.searchBox {
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    flex: 1;
+}

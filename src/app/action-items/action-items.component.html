@@ -1,14 +1,15 @@
 <div class="action-items-container">
   <div>
-    <button type="button" (click)='createNote()' class="btn btn-primary">Create</button>
+    <button title="Add a new note" type="button" (click)='createNote()' class="btn"><i class="fa fa-plus"></i></button>
   </div>
   <div>
-    <button type="button" (click)='deleteNote()' class="btn btn-primary">Delete</button>
+    <button title="remove the note" type="button" (click)='deleteNote()' class="btn"><i class="fa fa-remove"></i></button>
   </div>
   <div>
-    <button type="button" (click)='save()' class="btn btn-primary">Save</button>
+    <button title="Save all the note" type="button" (click)='save()' class="btn"><i class="fa fa-save"></i></button>
   </div>
-  <div>
-    <input type="text" placeholder="Search" (input)="search()" [(ngModel)]='searchText' />
-  </div>
+  <div class="searchContainer">
+    <i class="fa fa-search searchIcon"></i>
+    <input class="searchBox"  type="text" placeholder="Search" (input)="search()" [(ngModel)]='searchText'>
+  </div>  
 </div>
