@@ -87,7 +87,7 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
             }
         case SEARCH_NOTE:
             const { searchText } = action;
-            let notes;
+            let notes: INotes[] = [];
             if (!searchText) {
                 notes = prevState.notes.map(note => ({
                     ...note,
@@ -102,10 +102,11 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
                     ) ? true : false
                 }));
             }
+            const firstNote = notes.find(note => note.visible);
             return {
                 ...prevState,
                 notes,
-                activeNoteId: notes[0].id
+                activeNoteId: firstNote ? firstNote.id : null
             };
         default:
             return prevState;
