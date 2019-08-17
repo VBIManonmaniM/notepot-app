@@ -81,9 +81,13 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
                 ]
             }
         case SET_ACTIVE_NOTE:
-            return {
-                ...prevState,
-                activeNoteId: action.id
+            {
+                let newState = {
+                    ...prevState,
+                    activeNoteId: action.id
+                };
+                window.localStorage.setItem('notes', JSON.stringify(newState));
+                return newState;
             }
         case SEARCH_NOTE:
             const { searchText } = action;
