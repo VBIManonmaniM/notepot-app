@@ -11,7 +11,6 @@ export class AppComponent extends OnInit {
   @ViewChild('rightArrow') rightArrow: ElementRef;
   
   ngOnInit() {
-    // this.showNoteList();
   }
 
   hideNoteList() {
