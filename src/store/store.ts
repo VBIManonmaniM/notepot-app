@@ -16,9 +16,16 @@ let existingNotes = window.localStorage.getItem('notes') as any;
 if (existingNotes) {
     existingNotes = JSON.parse(existingNotes);
 } else {
+    const id = Math.random();
     existingNotes = {
-        notes: [],
-        activeNoteId: null
+        notes: [{
+            id,
+            title: '',
+            content: '',
+            lastUpdated: new Date(),
+            visible: true
+        }],
+        activeNoteId: id
     };
 }
 export const INITIAL_STATE: IAppState = existingNotes;
@@ -40,11 +47,13 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
             }
         case DELETE_NOTE:
             const newNodes = prevState.notes.filter(note => note.id !== prevState.activeNoteId)
-            return {
+            const newState = {
                 ...prevState,
                 notes: newNodes,
                 activeNoteId: newNodes[0] ? newNodes[0].id : null
             }
+            window.localStorage.setItem('notes', JSON.stringify(newState));
+            return newState;
         case UPDATE_NOTE:
             let note = prevState.notes.find(note => note.id === action.note.id);
             let index = prevState.notes.indexOf(note);

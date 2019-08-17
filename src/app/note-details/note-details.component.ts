@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgRedux, select} from '@angular-redux/store';
 import { IAppState, INotes } from 'store/store';
 import { UPDATE_NOTE } from "../../store/action";
 @Component({
@@ -7,9 +7,10 @@ import { UPDATE_NOTE } from "../../store/action";
   templateUrl: './note-details.component.html',
   styleUrls: ['./note-details.component.css']
 })
-export class NoteDetailsComponent implements OnInit {
+export class NoteDetailsComponent implements OnInit, OnDestroy {
   @select() notes;
   @select() activeNoteId;
+  private unsubscribe: any;
   private model: INotes = {
     id: '',
     title: '',
@@ -42,7 +43,11 @@ export class NoteDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ngRedux.subscribe(this.setActiveNote);
+    this.unsubscribe = this.ngRedux.subscribe(this.setActiveNote);
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 
   onChange() {
