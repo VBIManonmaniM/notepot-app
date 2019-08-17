@@ -1,3 +1,16 @@
 app-note-details {
     flex-grow: 1;
 }
+
+
+@media screen and (max-width: 768px) {
+    app-note-list {
+        display: none;
+    }
+    .left-arrow {
+        display: none;
+    }
+    .right-arrow {
+        display: block;
+    }
+}
