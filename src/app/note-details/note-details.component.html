@@ -1,15 +1,21 @@
 <div class="d-flex flex-column">
-  <input 
-    type='text'
-    (input)='onChange()' 
-    [(ngModel)]='model.title'
-    placeholder="Title" 
-  />
-  <textarea 
-    placeholder="Content"
-    (input)='onChange()' 
-    [(ngModel)]='model.content'
-    cols="100"
-    rows="20"
-  ></textarea>
+  <div class="form-group">
+    <input
+      type='text'
+      (input)='onChange()' 
+      [(ngModel)]='model.title'
+      placeholder="Title" 
+      class="form-control" 
+    >
+  </div>
+  <div class="form-group">
+    <textarea
+      class="form-control rounded-0"
+      placeholder="Content"
+      (input)='onChange()' 
+      [(ngModel)]='model.content'
+      cols="100"
+      rows="20"
+    ></textarea>
+  </div>
 </div>
