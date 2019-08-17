@@ -13,10 +13,22 @@ export interface IAppState {
 }
 
 let existingNotes = window.localStorage.getItem('notes') as any;
+const id = Math.random().toString();
 if (existingNotes) {
     existingNotes = JSON.parse(existingNotes);
+    if (!existingNotes.notes.length) {
+        existingNotes = {
+            notes: [{
+                id,
+                title: '',
+                content: '',
+                lastUpdated: new Date(),
+                visible: true
+            }],
+            activeNoteId: id
+        };
+    }
 } else {
-    const id = Math.random();
     existingNotes = {
         notes: [{
             id,

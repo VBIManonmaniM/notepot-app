@@ -9,6 +9,12 @@ app-note-details {
     display: none;
 }
 
+.time-stamp {
+    flex-grow: 1;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
 @media screen and (max-width: 768px) {
     app-note-list {
         display: none;

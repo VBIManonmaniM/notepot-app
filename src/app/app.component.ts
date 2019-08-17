@@ -7,9 +7,17 @@ import { Component, ElementRef, ViewChild, OnInit} from '@angular/core';
 })
 export class AppComponent extends OnInit {
   showNote = true;
+  now: Date = new Date();
   @ViewChild('leftArrow') leftArrow: ElementRef;
   @ViewChild('rightArrow') rightArrow: ElementRef;
   
+  constructor() {
+    super();
+    setInterval(() => {
+      this.now = new Date();
+    },1000);
+  }
+
   ngOnInit() {
   }
 
