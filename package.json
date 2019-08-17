@@ -9,7 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "proddeploy": "firebase deploy"
+    "deploy": "npm run build & firebase deploy"
   },
   "private": true,
   "dependencies": {
