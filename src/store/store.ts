@@ -87,26 +87,26 @@ export const rootReducer = (prevState: IAppState, action): IAppState => {
             }
         case SEARCH_NOTE:
             const { searchText } = action;
+            let notes;
             if (!searchText) {
-                return {
-                    ...prevState,
-                    notes: prevState.notes.map(note => ({
-                        ...note,
-                        visible: true
-                    }))
-                };
+                notes = prevState.notes.map(note => ({
+                    ...note,
+                    visible: true
+                }));
             } else {
-                return {
-                    ...prevState,
-                    notes: prevState.notes.map(note => ({
-                        ...note,
-                        visible: (
-                            note.title.includes(searchText) ||
-                            note.content.includes(searchText)
-                        ) ? true : false
-                    }))
-                };
+                notes = prevState.notes.map(note => ({
+                    ...note,
+                    visible: (
+                        note.title.includes(searchText) ||
+                        note.content.includes(searchText)
+                    ) ? true : false
+                }));
             }
+            return {
+                ...prevState,
+                notes,
+                activeNoteId: notes[0].id
+            };
         default:
             return prevState;
     }
